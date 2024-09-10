@@ -25,6 +25,7 @@ export const CodeWarsList: FC<CodeWarsListProps> = (props) => {
   //
   //   void getData();
   // }, []);
+
   return (
     <Grid2
       className={cnCodeWarsList(undefined, [props.className])}
