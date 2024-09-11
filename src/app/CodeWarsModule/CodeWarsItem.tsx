@@ -28,13 +28,13 @@ export const CodeWarsItem: FC<CodeWarsItemProps> = (props) => {
     });
   };
 
-  const getId = async (): Promise<void> => {
-    const resp = await CodeWarsServices.edit('1');
-
-    if (resp) {
-      setData(resp);
-    }
-  };
+  // const getId = async (): Promise<void> => {
+  //   const resp = await CodeWarsServices.edit('1');
+  //
+  //   if (resp) {
+  //     setData(resp);
+  //   }
+  // };
 
   return (
     <Card
@@ -51,10 +51,10 @@ export const CodeWarsItem: FC<CodeWarsItemProps> = (props) => {
           zIndex={0}
           sx={{ opacity: 0.5, right: 8, top: 0 }}
         >
-          {props.taskData.userId}
+          {props.taskData}
         </Typography>
         <Typography variant="body2" color="text.secondary" marginTop={1}>
-          {props.taskData.title}
+          {props.taskData}
         </Typography>
       </CardContent>
       <CardActions sx={{ justifyContent: 'end' }}>

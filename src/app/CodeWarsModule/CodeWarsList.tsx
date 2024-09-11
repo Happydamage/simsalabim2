@@ -6,12 +6,14 @@ import { CodeWarsServices } from './services/CodeWarsServices.ts';
 import './styles/CodeWarsList.scss';
 import { Grid2 } from '@mui/material';
 const cnCodeWarsList = cn('CodeWarsList');
+import firebase from 'firebase/compat/app';
 
 interface CodeWarsListProps {
   className?: string;
 }
 
 export const CodeWarsList: FC<CodeWarsListProps> = (props) => {
+  // const db = firebase.firestore();
   const [data, setData] = useState<CodeWarsModel[]>([]);
 
   // useEffect(() => {
@@ -32,11 +34,12 @@ export const CodeWarsList: FC<CodeWarsListProps> = (props) => {
       container
       spacing={2}
     >
-      {data.map((el, index) => (
-        <Grid2 key={index + 1}>
-          <CodeWarsItem id={el.id} taskData={el.taskData} />
-        </Grid2>
-      ))}
+      <CodeWarsItem id={'1'} taskData={'pew'} />
+      {/*{data.map((el, index) => (*/}
+      {/*  <Grid2 key={index + 1}>*/}
+      {/*    <CodeWarsItem id={el.id} taskData={el.taskData} />*/}
+      {/*  </Grid2>*/}
+      {/*))}*/}
       <div className={cnCodeWarsList('Image')}></div>
     </Grid2>
   );

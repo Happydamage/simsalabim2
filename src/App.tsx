@@ -1,6 +1,10 @@
-import './App.css';
+// Required for side effects
+import 'firebase/firestore';
+
 import { createTheme, ThemeProvider } from '@mui/material';
 import { AppRouter } from './app/router/AppRouter.tsx';
+import './App.css';
+
 // Import the functions you need from the SDKs you need
 import { initializeApp } from 'firebase/app';
 // TODO: Add SDKs for Firebase products that you want to use

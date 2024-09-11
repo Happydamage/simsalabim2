@@ -6,5 +6,5 @@ export interface CodeWarsDataModel {
 
 export interface CodeWarsModel {
   id: string;
-  taskData: CodeWarsDataModel;
+  taskData: string;
 }
