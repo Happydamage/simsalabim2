@@ -50,3 +50,4 @@ export default tseslint.config({
 ```
 pnpm
 node 20.16.0
+firebase emulators:start

@@ -5,12 +5,12 @@ import { FC } from 'react';
 //https://programming.earthonline.us/what-are-k-t-and-v-in-typescript-generics-9fabe1d0f0f3
 
 export const Pick: FC = () => {
-  function identity<T, U>(value: T, message: U): T {
-    console.log(value + message);
-    return value + message;
-  }
-
-  identity<number, string>(12, 'qwe');
+  // function identity<T, U>(value: T, message: U): T {
+  //   console.log(value + message);
+  //   return value + message;
+  // }
+  //
+  // identity<number, string>(12, 'qwe');
 
   type Item = { a: string; b: number; c: boolean };
   type ExType1<T> = { [P in keyof T]: T[P] };
