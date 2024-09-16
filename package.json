@@ -7,8 +7,7 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview",
-    "firebase": "firebase emulators:start"
+    "preview": "vite preview"
   },
   "dependencies": {
     "@bem-react/classname": "^1.6.0",

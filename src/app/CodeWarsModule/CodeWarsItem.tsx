@@ -8,25 +8,21 @@ import {
   CardContent,
   Typography,
 } from '@mui/material';
-import { CodeWarsModel } from './models/CodeWarsModel.ts';
+import { CodeWarsUnitModel } from './models/CodeWarsModel.ts';
 import { CodeWarsServices } from './services/CodeWarsServices.ts';
 
 const cnCodeWarsItem = cn('CodeWarsItem');
 
-interface CodeWarsItemProps extends CodeWarsModel {
+interface CodeWarsItemProps extends CodeWarsUnitModel {
   className?: string;
 }
 
 export const CodeWarsItem: FC<CodeWarsItemProps> = (props) => {
-  const [data, setData] = useState<CodeWarsModel | null>(null);
+  const [data, setData] = useState<CodeWarsUnitModel | null>(null);
 
-  const create = async (): Promise<void> => {
-    await CodeWarsServices.create({
-      userId: 123,
-      title: '123',
-      completed: true,
-    });
-  };
+  // const create = async (): Promise<void> => {
+  //   await CodeWarsServices.create({});
+  // };
 
   // const getId = async (): Promise<void> => {
   //   const resp = await CodeWarsServices.edit('1');
@@ -39,7 +35,12 @@ export const CodeWarsItem: FC<CodeWarsItemProps> = (props) => {
   return (
     <Card
       className={cnCodeWarsItem(undefined, [props.className])}
-      sx={{ position: 'relative', height: 150 }}
+      sx={{
+        position: 'relative',
+        height: 150,
+        display: 'flex',
+        flexDirection: 'column',
+      }}
     >
       <CardContent>
         <Typography
@@ -51,15 +52,15 @@ export const CodeWarsItem: FC<CodeWarsItemProps> = (props) => {
           zIndex={0}
           sx={{ opacity: 0.5, right: 8, top: 0 }}
         >
-          {props.taskData}
+          {props.unitId}
         </Typography>
         <Typography variant="body2" color="text.secondary" marginTop={1}>
-          {props.taskData}
+          {props.description}
         </Typography>
       </CardContent>
-      <CardActions sx={{ justifyContent: 'end' }}>
-        <Button size="small" variant="contained" onClick={() => create()}>
-          test
+      <CardActions sx={{ justifyContent: 'end', marginTop: 'auto' }}>
+        <Button size="small" variant="contained">
+          Edit
         </Button>
         <Button size="small" variant="outlined">
           Delete

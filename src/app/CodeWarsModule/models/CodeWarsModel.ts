@@ -1,10 +1,6 @@
-export interface CodeWarsDataModel {
-  userId: number;
-  title: string;
-  completed: boolean;
-}
-
-export interface CodeWarsModel {
-  id: string;
-  taskData: string;
+export interface CodeWarsUnitModel {
+  unitId: number;
+  description: string;
+  solution: string;
+  hashtag: string;
 }

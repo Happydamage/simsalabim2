@@ -47,15 +47,17 @@ export const CodeWarsList: FC<CodeWarsListProps> = (props) => {
       container
       spacing={2}
     >
-      <CodeWarsItem id={'1'} taskData={'pew'} />
+      <CodeWarsItem
+        unitId={1}
+        description={'Pew pew pew'}
+        solution={'Qwerty qwerty qwerty'}
+        hashtag={'array'}
+      />
       {/*{data.map((el, index) => (*/}
       {/*  <Grid2 key={index + 1}>*/}
       {/*    <CodeWarsItem id={el.id} taskData={el.taskData} />*/}
       {/*  </Grid2>*/}
       {/*))}*/}
-      <Button onClick={() => setData()} variant={'contained'}>
-        pew
-      </Button>
       <div className={cnCodeWarsList('Image')}></div>
     </Grid2>
   );
