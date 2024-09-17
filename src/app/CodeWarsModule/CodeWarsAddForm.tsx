@@ -1,10 +1,11 @@
 import { FC } from 'react';
 import { cn } from '@bem-react/classname';
-import { Button, Stack, TextField } from '@mui/material';
-import { useForm, SubmitHandler } from 'react-hook-form';
+import { Button, Stack, TextareaAutosize, TextField } from '@mui/material';
+import { useForm } from 'react-hook-form';
 import { CodeWarsUnitModel } from './models/CodeWarsModel.ts';
 import { collection, doc, setDoc } from 'firebase/firestore';
 import { db } from '../Firebase/Firebase.ts';
+import { Label } from '@mui/icons-material';
 
 const cnCodeWarsAddForm = cn('CodeWarsAddForm');
 
@@ -13,52 +14,49 @@ interface CodeWarsAddFormProps {
 }
 
 export const CodeWarsAddForm: FC<CodeWarsAddFormProps> = (props) => {
-  const { register, handleSubmit } = useForm<CodeWarsUnitModel>();
   const citiesRef = collection(db, 'cities');
+  const codeWarsRef = collection(db, 'codeWars');
   const docRef = doc(db, 'cities', 'SF');
 
-  const onSubmit: SubmitHandler<CodeWarsUnitModel> = (data) => {
-    const setData = async (): Promise<void> => {
-      await setDoc(doc(citiesRef, 'test'), {
-        data,
-      });
-    };
-  };
+  const {
+    register,
+    setValue,
+    handleSubmit,
+    // formState: { errors },
+  } = useForm<CodeWarsUnitModel>();
 
-  const setData = async (): Promise<void> => {
-    await setDoc(doc(citiesRef, 'test1'), {
-      name: 'Kirovskoe',
-      state: 'Huirovskoe',
-      country: 'Russia',
-      capital: true,
-      population: 300,
-      regions: ['west_coast', 'kokojambo'],
+  const onSubmit = handleSubmit(async (data): Promise<void> => {
+    await setDoc(doc(codeWarsRef, data.unitId), {
+      unitID: data.unitId,
+      description: data.description,
+      solution: data.solution,
+      hashtag: data.hashtag,
     });
-  };
+  });
 
   return (
     <form
       className={cnCodeWarsAddForm(undefined, [props.className])}
-      onSubmit={handleSubmit(onSubmit)}
+      onSubmit={onSubmit}
     >
       <Stack gap={1}>
         <TextField {...register('unitId')} variant={'outlined'} label={'№'} />
-        <TextField
+        <TextareaAutosize
+          placeholder={'Description'}
           {...register('description')}
-          variant={'outlined'}
-          label={'Description'}
+          style={{ minHeight: 100 }}
         />
-        <TextField
+        <TextareaAutosize
+          placeholder={'Solution'}
           {...register('solution')}
-          variant={'outlined'}
-          label={'Solution'}
+          style={{ minHeight: 100 }}
         />
         <TextField
           {...register('hashtag')}
           variant={'outlined'}
           label={'Hashtag'}
         />
-        <Button variant={'contained'} type={'submit'} onClick={() => setData()}>
+        <Button variant={'contained'} type={'submit'}>
           Submit
         </Button>
       </Stack>

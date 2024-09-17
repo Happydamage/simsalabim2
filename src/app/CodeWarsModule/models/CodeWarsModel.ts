@@ -1,5 +1,5 @@
 export interface CodeWarsUnitModel {
-  unitId: number;
+  unitId: string;
   description: string;
   solution: string;
   hashtag: string;
