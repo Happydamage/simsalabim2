@@ -1,10 +1,10 @@
 import { FC, useEffect, useState } from 'react';
 import { cn } from '@bem-react/classname';
 import { CodeWarsItem } from './CodeWarsItem.tsx';
-import { CodeWarsModel } from './models/CodeWarsModel.ts';
+import { CodeWarsModel, CodeWarsUnitModel } from './models/CodeWarsModel.ts';
 import './styles/CodeWarsList.scss';
-import { Button, Grid2 } from '@mui/material';
-import { collection, doc, setDoc } from 'firebase/firestore';
+import { Grid2 } from '@mui/material';
+import { collection, doc, getDocs } from 'firebase/firestore';
 import { db } from '../Firebase/Firebase.ts';
 
 const cnCodeWarsList = cn('CodeWarsList');
@@ -14,19 +14,9 @@ interface CodeWarsListProps {
 }
 
 export const CodeWarsList: FC<CodeWarsListProps> = (props) => {
-  // const [data, setData] = useState<CodeWarsModel[]>([]);
-  const citiesRef = collection(db, 'cities');
-  const docRef = doc(db, 'cities', 'SF');
-
-  const setData = async (): Promise<void> => {
-    await setDoc(doc(citiesRef, 'test'), {
-      name: 'Kirovskoe',
-      state: 'Huirovskoe',
-      country: 'Russia',
-      capital: true,
-      population: 300,
-      regions: ['west_coast', 'kokojambo'],
-    });
+  const [data, setData] = useState<CodeWarsUnitModel[]>([]);
+  const getUnitsList = async (): Promise<void> => {
+    await getDocs(collection(db, 'codeWars'));
   };
 
   // useEffect(() => {

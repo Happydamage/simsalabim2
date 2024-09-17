@@ -37,7 +37,8 @@ export const CodeWarsItem: FC<CodeWarsItemProps> = (props) => {
       className={cnCodeWarsItem(undefined, [props.className])}
       sx={{
         position: 'relative',
-        height: 150,
+        height: 250,
+        width: 250,
         display: 'flex',
         flexDirection: 'column',
       }}
