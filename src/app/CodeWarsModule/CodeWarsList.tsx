@@ -48,7 +48,7 @@ export const CodeWarsList: FC<CodeWarsListProps> = (props) => {
       spacing={2}
     >
       <CodeWarsItem
-        unitId={1}
+        unitId={'1'}
         description={'Pew pew pew'}
         solution={'Qwerty qwerty qwerty'}
         hashtag={'array'}

@@ -5,7 +5,6 @@ import { useForm } from 'react-hook-form';
 import { CodeWarsUnitModel } from './models/CodeWarsModel.ts';
 import { collection, doc, setDoc } from 'firebase/firestore';
 import { db } from '../Firebase/Firebase.ts';
-import { Label } from '@mui/icons-material';
 
 const cnCodeWarsAddForm = cn('CodeWarsAddForm');
 
@@ -14,16 +13,9 @@ interface CodeWarsAddFormProps {
 }
 
 export const CodeWarsAddForm: FC<CodeWarsAddFormProps> = (props) => {
-  const citiesRef = collection(db, 'cities');
   const codeWarsRef = collection(db, 'codeWars');
-  const docRef = doc(db, 'cities', 'SF');
 
-  const {
-    register,
-    setValue,
-    handleSubmit,
-    // formState: { errors },
-  } = useForm<CodeWarsUnitModel>();
+  const { register, handleSubmit } = useForm<CodeWarsUnitModel>();
 
   const onSubmit = handleSubmit(async (data): Promise<void> => {
     await setDoc(doc(codeWarsRef, data.unitId), {
