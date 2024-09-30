@@ -1,7 +1,7 @@
 import { FC, useEffect, useState } from 'react';
 import { cn } from '@bem-react/classname';
 import { CodeWarsItem } from './CodeWarsItem.tsx';
-import { CodeWarsModel, CodeWarsUnitModel } from './models/CodeWarsModel.ts';
+import { CodeWarsUnitModel } from './models/CodeWarsModel.ts';
 import './styles/CodeWarsList.scss';
 import { Grid2 } from '@mui/material';
 import { collection, doc, getDocs } from 'firebase/firestore';
@@ -48,7 +48,6 @@ export const CodeWarsList: FC<CodeWarsListProps> = (props) => {
       {/*    <CodeWarsItem id={el.id} taskData={el.taskData} />*/}
       {/*  </Grid2>*/}
       {/*))}*/}
-      <div className={cnCodeWarsList('Image')}></div>
     </Grid2>
   );
 };
