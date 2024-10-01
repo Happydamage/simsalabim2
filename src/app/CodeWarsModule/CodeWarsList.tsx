@@ -1,11 +1,11 @@
 import { FC, useEffect, useState } from 'react';
 import { cn } from '@bem-react/classname';
 import { CodeWarsItem } from './CodeWarsItem.tsx';
-import { CodeWarsUnitModel } from './models/CodeWarsModel.ts';
 import './styles/CodeWarsList.scss';
 import { Grid2 } from '@mui/material';
-import { doc, getDoc } from 'firebase/firestore';
+import { collection, doc, getDoc, getDocs } from 'firebase/firestore';
 import { db } from '../Firebase/Firebase.ts';
+import { CodeWarsUnitModel } from './models/CodeWarsModel.ts';
 
 const cnCodeWarsList = cn('CodeWarsList');
 
@@ -14,22 +14,29 @@ interface CodeWarsListProps {
 }
 
 export const CodeWarsList: FC<CodeWarsListProps> = (props) => {
-  const unitRef = doc(db, 'codeWars', '333');
+  const [unitListData, setUnitListData] = useState<CodeWarsUnitModel[] | null>(
+    null
+  );
+  // const unitRef = doc(db, 'codeWars', '333');
 
   useEffect(() => {
     const getUnitData = async (): Promise<void> => {
-      const unitSnap = await getDoc(unitRef);
-      console.log(unitSnap);
+      const unitsList = await getDocs(collection(db, 'codeWars'));
+      // const unitSnap = await getDoc(unitRef);
 
-      if (unitSnap.exists()) {
-        console.log('unitData:', unitSnap.data());
-      } else {
-        console.log('noooooo');
-      }
+      unitsList.forEach((unit) => {
+        console.log(unit.data());
+      });
+
+      // if (unitSnap.exists()) {
+      //   console.log('unitData:', unitSnap.data());
+      // } else {
+      //   console.log('noooooo');
+      // }
     };
 
     void getUnitData();
-  }, [unitRef]);
+  }, []);
 
   return (
     <Grid2
