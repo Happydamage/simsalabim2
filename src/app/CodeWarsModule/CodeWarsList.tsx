@@ -17,8 +17,9 @@ export const CodeWarsList: FC<CodeWarsListProps> = (props) => {
   const unitRef = doc(db, 'codeWars', '333');
 
   useEffect(() => {
-    const getData = async (): Promise<void> => {
+    const getUnitData = async (): Promise<void> => {
       const unitSnap = await getDoc(unitRef);
+      console.log(unitSnap);
 
       if (unitSnap.exists()) {
         console.log('unitData:', unitSnap.data());
@@ -27,7 +28,7 @@ export const CodeWarsList: FC<CodeWarsListProps> = (props) => {
       }
     };
 
-    void getData();
+    void getUnitData();
   }, [unitRef]);
 
   return (
