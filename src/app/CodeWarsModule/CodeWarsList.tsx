@@ -4,7 +4,7 @@ import { CodeWarsItem } from './CodeWarsItem.tsx';
 import { CodeWarsUnitModel } from './models/CodeWarsModel.ts';
 import './styles/CodeWarsList.scss';
 import { Grid2 } from '@mui/material';
-import { collection, doc, getDocs } from 'firebase/firestore';
+import { doc, getDoc } from 'firebase/firestore';
 import { db } from '../Firebase/Firebase.ts';
 
 const cnCodeWarsList = cn('CodeWarsList');
@@ -14,22 +14,21 @@ interface CodeWarsListProps {
 }
 
 export const CodeWarsList: FC<CodeWarsListProps> = (props) => {
-  const [data, setData] = useState<CodeWarsUnitModel[]>([]);
-  const getUnitsList = async (): Promise<void> => {
-    await getDocs(collection(db, 'codeWars'));
-  };
+  const unitRef = doc(db, 'codeWars', '333');
 
-  // useEffect(() => {
-  // const getData = async (): Promise<void> => {
-  // const resp = await CodeWarsServices.list();
-  //
-  // if (resp) {
-  //   setData(resp);
-  // }
-  //   };
-  //
-  //   void getData();
-  // }, []);
+  useEffect(() => {
+    const getData = async (): Promise<void> => {
+      const unitSnap = await getDoc(unitRef);
+
+      if (unitSnap.exists()) {
+        console.log('unitData:', unitSnap.data());
+      } else {
+        console.log('noooooo');
+      }
+    };
+
+    void getData();
+  }, [unitRef]);
 
   return (
     <Grid2
