@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { FC } from 'react';
 import { cn } from '@bem-react/classname';
 import './styles/CodeWarsItem.scss';
 import {
@@ -9,7 +9,6 @@ import {
   Typography,
 } from '@mui/material';
 import { CodeWarsUnitModel } from './models/CodeWarsModel.ts';
-import { CodeWarsServices } from './services/CodeWarsServices.ts';
 
 const cnCodeWarsItem = cn('CodeWarsItem');
 
@@ -18,8 +17,6 @@ interface CodeWarsItemProps extends CodeWarsUnitModel {
 }
 
 export const CodeWarsItem: FC<CodeWarsItemProps> = (props) => {
-  const [data, setData] = useState<CodeWarsUnitModel | null>(null);
-
   // const create = async (): Promise<void> => {
   //   await CodeWarsServices.create({});
   // };

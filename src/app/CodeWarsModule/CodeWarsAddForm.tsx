@@ -1,16 +1,22 @@
 import { FC, useEffect } from 'react';
 import { cn } from '@bem-react/classname';
-import { Button, Stack, TextareaAutosize, TextField } from '@mui/material';
+import {
+  Autocomplete,
+  Button,
+  Stack,
+  TextareaAutosize,
+  TextField,
+} from '@mui/material';
 import { useForm } from 'react-hook-form';
 import { CodeWarsUnitModel } from './models/CodeWarsModel.ts';
 import { collection, doc, setDoc } from 'firebase/firestore';
 import { db } from '../Firebase/Firebase.ts';
+import { HashtagLabels } from '../../constants/constants.ts';
 
 const cnCodeWarsAddForm = cn('CodeWarsAddForm');
 
 interface CodeWarsAddFormProps {
   className?: string;
-  onReset?: () => void;
 }
 
 export const CodeWarsAddForm: FC<CodeWarsAddFormProps> = (props) => {
@@ -45,24 +51,38 @@ export const CodeWarsAddForm: FC<CodeWarsAddFormProps> = (props) => {
     <form
       className={cnCodeWarsAddForm(undefined, [props.className])}
       onSubmit={onSubmit}
-      onReset={props.onReset}
     >
       <Stack gap={1}>
-        <TextField {...register('unitId')} variant={'outlined'} label={'№'} />
+        <TextField
+          required
+          {...register('unitId')}
+          variant={'outlined'}
+          label={'№'}
+        />
         <TextareaAutosize
+          required
           placeholder={'Description'}
           {...register('description')}
           style={{ minHeight: 100 }}
         />
         <TextareaAutosize
+          required
           placeholder={'Solution'}
           {...register('solution')}
           style={{ minHeight: 100 }}
         />
-        <TextField
-          {...register('hashtag')}
-          variant={'outlined'}
-          label={'Hashtag'}
+        <Autocomplete
+          multiple
+          options={HashtagLabels}
+          getOptionLabel={(option) => option.id}
+          renderInput={(params) => (
+            <TextField
+              required
+              {...params}
+              {...register('hashtag')}
+              label={'Hashtag'}
+            />
+          )}
         />
         <Button variant={'contained'} type={'submit'}>
           Submit
