@@ -1,4 +1,4 @@
-import { FC, useEffect } from 'react';
+import { FC, SyntheticEvent, useEffect } from 'react';
 import { cn } from '@bem-react/classname';
 import {
   Autocomplete,
@@ -11,7 +11,7 @@ import { useForm } from 'react-hook-form';
 import { CodeWarsUnitModel } from './models/CodeWarsModel.ts';
 import { collection, doc, setDoc } from 'firebase/firestore';
 import { db } from '../Firebase/Firebase.ts';
-import { HashtagLabels } from '../../constants/constants.ts';
+import { HashtagLabels, top100Films } from '../../constants/constants.ts';
 
 const cnCodeWarsAddForm = cn('CodeWarsAddForm');
 
@@ -33,6 +33,8 @@ export const CodeWarsAddForm: FC<CodeWarsAddFormProps> = (props) => {
   });
 
   const onSubmit = handleSubmit(async (data): Promise<void> => {
+    console.log(data.hashtag);
+    console.log(data.unitId);
     await setDoc(doc(codeWarsRef, data.unitId), {
       unitID: data.unitId,
       description: data.description,
@@ -54,35 +56,41 @@ export const CodeWarsAddForm: FC<CodeWarsAddFormProps> = (props) => {
     >
       <Stack gap={1}>
         <TextField
-          required
+          // required
           {...register('unitId')}
           variant={'outlined'}
           label={'№'}
         />
         <TextareaAutosize
-          required
+          // required
           placeholder={'Description'}
           {...register('description')}
           style={{ minHeight: 100 }}
         />
         <TextareaAutosize
-          required
+          // required
           placeholder={'Solution'}
           {...register('solution')}
           style={{ minHeight: 100 }}
         />
+        {/*<Autocomplete*/}
+        {/*  options={HashtagLabels}*/}
+        {/*  getOptionLabel={(option) => option.id}*/}
+        {/*  renderInput={(params) => (*/}
+        {/*    <TextField*/}
+        {/*      required*/}
+        {/*      {...register('hashtag')}*/}
+        {/*      {...params}*/}
+        {/*      label={'Hashtag'}*/}
+        {/*    />*/}
+        {/*  )}*/}
+        {/*/>*/}
         <Autocomplete
           multiple
-          options={HashtagLabels}
-          getOptionLabel={(option) => option.id}
-          renderInput={(params) => (
-            <TextField
-              required
-              {...params}
-              {...register('hashtag')}
-              label={'Hashtag'}
-            />
-          )}
+          {...register('hashtag')}
+          options={top100Films}
+          getOptionLabel={(option) => option.title}
+          renderInput={(params) => <TextField {...params} label="Hashtag" />}
         />
         <Button variant={'contained'} type={'submit'}>
           Submit
