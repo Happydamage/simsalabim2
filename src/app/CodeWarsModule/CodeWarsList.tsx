@@ -6,6 +6,8 @@ import { Grid2 } from '@mui/material';
 import { collection, doc, getDoc, getDocs } from 'firebase/firestore';
 import { db } from '../Firebase/Firebase.ts';
 import { CodeWarsUnitModel } from './models/CodeWarsModel.ts';
+import { N1 } from './Tasks/N1.tsx';
+import { N2 } from './Tasks/N2.tsx';
 
 const cnCodeWarsList = cn('CodeWarsList');
 
@@ -14,29 +16,29 @@ interface CodeWarsListProps {
 }
 
 export const CodeWarsList: FC<CodeWarsListProps> = (props) => {
-  const [unitListData, setUnitListData] = useState<CodeWarsUnitModel[] | null>(
-    null
-  );
+  // const [unitListData, setUnitListData] = useState<CodeWarsUnitModel[] | null>(
+  //   null
+  // );
   // const unitRef = doc(db, 'codeWars', '333');
 
-  useEffect(() => {
-    const getUnitData = async (): Promise<void> => {
-      const unitsList = await getDocs(collection(db, 'codeWars'));
-      // const unitSnap = await getDoc(unitRef);
+  // useEffect(() => {
+  // const getUnitData = async (): Promise<void> => {
+  //   const unitsList = await getDocs(collection(db, 'codeWars'));
+  // const unitSnap = await getDoc(unitRef);
 
-      unitsList.forEach((unit) => {
-        console.log(unit.data());
-      });
+  // unitsList.forEach((unit) => {
+  //   console.log(unit.data());
+  // });
 
-      // if (unitSnap.exists()) {
-      //   console.log('unitData:', unitSnap.data());
-      // } else {
-      //   console.log('noooooo');
-      // }
-    };
-
-    void getUnitData();
-  }, []);
+  // if (unitSnap.exists()) {
+  //   console.log('unitData:', unitSnap.data());
+  // } else {
+  //   console.log('noooooo');
+  // }
+  //   };
+  //
+  //   void getUnitData();
+  // }, []);
 
   return (
     <Grid2
@@ -44,17 +46,18 @@ export const CodeWarsList: FC<CodeWarsListProps> = (props) => {
       container
       spacing={2}
     >
-      <CodeWarsItem
-        unitId={'1'}
-        description={'Pew pew pew'}
-        solution={'Qwerty qwerty qwerty'}
-        hashtag={'array'}
-      />
+      {/*<CodeWarsItem*/}
+      {/*  unitId={'1'}*/}
+      {/*  description={'Pew pew pew'}*/}
+      {/*  solution={'Qwerty qwerty qwerty'}*/}
+      {/*  hashtag={'array'}*/}
+      {/*/>*/}
       {/*{data.map((el, index) => (*/}
       {/*  <Grid2 key={index + 1}>*/}
       {/*    <CodeWarsItem id={el.id} taskData={el.taskData} />*/}
       {/*  </Grid2>*/}
       {/*))}*/}
+      <N2 />
     </Grid2>
   );
 };
