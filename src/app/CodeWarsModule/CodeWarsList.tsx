@@ -6,8 +6,7 @@ import { Grid2 } from '@mui/material';
 import { collection, doc, getDoc, getDocs } from 'firebase/firestore';
 import { db } from '../Firebase/Firebase.ts';
 import { CodeWarsUnitModel } from './models/CodeWarsModel.ts';
-import { N1 } from './Tasks/N1.tsx';
-import { N2 } from './Tasks/N2.tsx';
+import { TestBoard } from './Tasks/TestBoard.tsx';
 
 const cnCodeWarsList = cn('CodeWarsList');
 
@@ -40,6 +39,10 @@ export const CodeWarsList: FC<CodeWarsListProps> = (props) => {
   //   void getUnitData();
   // }, []);
 
+  // It's pretty straightforward. Your goal is to create a function that removes the first and last characters of a string. ' +
+  //'You're given one parameter, the original string.
+  // You don't have to worry about strings with less than two characters.
+
   return (
     <Grid2
       className={cnCodeWarsList(undefined, [props.className])}
@@ -57,7 +60,7 @@ export const CodeWarsList: FC<CodeWarsListProps> = (props) => {
       {/*    <CodeWarsItem id={el.id} taskData={el.taskData} />*/}
       {/*  </Grid2>*/}
       {/*))}*/}
-      <N2 />
+      <TestBoard />
     </Grid2>
   );
 };

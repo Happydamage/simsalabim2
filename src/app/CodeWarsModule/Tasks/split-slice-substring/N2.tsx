@@ -28,11 +28,5 @@ export const N2: FC<N2Props> = (props) => {
     return str.substring(1, str.length - 1);
   }
 
-  removeChar('aboba');
-  removeChar2('aboba');
-  removeChar3('aboba');
-
-  console.log(removeChar3('qwerty'));
-
   return <div className={cnN2(undefined, [props.className])}>N2</div>;
 };
