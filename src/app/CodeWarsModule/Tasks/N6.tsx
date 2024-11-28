@@ -35,5 +35,11 @@ export const N6: FC<N6Props> = (props) => {
     return answer;
   }
 
+  function accum2(s: string): string {
+    return [...s]
+      .map((el, index) => el.toUpperCase() + el.toLowerCase().repeat(index))
+      .join('-');
+  }
+
   return <div className={cnN6(undefined, [props.className])}>N6</div>;
 };
