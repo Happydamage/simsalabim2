@@ -19,7 +19,5 @@ export const N4: FC<N4Props> = (props) => {
     return arr;
   };
 
-  console.log(reverseSeq(15));
-
   return <div className={cnN4(undefined, [props.className])}>N4</div>;
 };
