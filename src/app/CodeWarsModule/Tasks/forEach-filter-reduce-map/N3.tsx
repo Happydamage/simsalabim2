@@ -29,7 +29,6 @@ export const N3: FC<N3Props> = (props) => {
   function positiveSum(arr: number[]): number {
     return arr.reduce((sum, el) => sum + (el > 0 ? el : 0), 0);
   }
-  console.log(positiveSum(arr));
 
   return <div className={cnN3(undefined, [props.className])}>N3</div>;
 };
