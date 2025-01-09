@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { cn } from '@bem-react/classname';
-import { N10 } from './N10.tsx';
+import { Lc1 } from '../../LeetCode/Lc1.tsx';
 
 const cnTestBoard = cn('TestBoard');
 
@@ -11,7 +11,7 @@ interface TestBoardProps {
 export const TestBoard: FC<TestBoardProps> = (props) => {
   return (
     <div className={cnTestBoard(undefined, [props.className])}>
-      <N10 />
+      <Lc1 />
     </div>
   );
 };

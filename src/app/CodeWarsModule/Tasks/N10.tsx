@@ -37,7 +37,5 @@ export const N10: FC<N10Props> = (props) => {
     return result;
   }
 
-  console.log(countPositivesSumNegatives(arr));
-
   return <div className={cnN10(undefined, [props.className])}>N10</div>;
 };
