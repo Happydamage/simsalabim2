@@ -57,20 +57,20 @@ export const Lc1: FC<Lc1Props> = (props) => {
 
   // Approach 2: Two-pass Hash Table
 
-  function twoSum(nums: number[], target: number): number[] {
-    const map: Map<number, number> = new Map();
-    for (let i = 0; i < nums.length; i++) {
-      const complement = target - nums[i];
-      if (map.has(complement)) {
-        return [map.get(complement), i];
-      }
-      map.set(nums[i], i);
-    }
-    // Return an empty array if no solution is found
-    return [];
-  }
+  // function twoSum(nums: number[], target: number): number[] {
+  //   const map: Map<number, number> = new Map();
+  //   for (let i = 0; i < nums.length; i++) {
+  //     const complement = target - nums[i];
+  //     if (map.has(complement)) {
+  //       return [map.get(complement), i];
+  //     }
+  //     map.set(nums[i], i);
+  //   }
+  //   // Return an empty array if no solution is found
+  //   return [];
+  // }
 
-  console.log(twoSum([2, 11, 7, 1], 9));
+  // console.log(twoSum([2, 11, 7, 1], 9));
 
   return <div className={cnN12(undefined, [props.className])}>N12</div>;
 };
