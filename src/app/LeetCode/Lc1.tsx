@@ -1,12 +1,12 @@
-import { FC } from 'react';
+import React, { FC } from 'react';
 import { cn } from '@bem-react/classname';
 
-const cnN12 = cn('Lc1');
-
-interface Lc1Props {
-  className?: string;
-}
-
+// Two Sum
+// Solved
+// Easy
+// Topics
+// Companies
+// Hint
 // Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
 //
 //   You may assume that each input would have exactly one solution, and you may not use the same element twice.
@@ -40,37 +40,51 @@ interface Lc1Props {
 //
 //   Follow-up: Can you come up with an algorithm that is less than O(n2) time complexity?
 
+const cnLc1 = cn('Lc1');
+
+interface Lc1Props {
+  className?: string;
+}
+
 export const Lc1: FC<Lc1Props> = (props) => {
-  // // Approach 1: Brute Force
-  //
-  // function twoSum(nums: number[], target: number): number[] {
-  //   for (let i = 0; i < nums.length; i++) {
-  //     for (let j = i + 1; j < nums.length; j++) {
-  //       if (nums[j] === target - nums[i]) {
-  //         return [i, j];
+  // Variant 1
+
+  //   function twoSum(nums: number[], target: number): number[] {
+  //     for (let i = 0; i < nums.length; i++) {
+  //       for (let j = i + 1; j < nums.length; j++) {
+  //         if (target - nums[i] === nums[j]) {
+  //           return [i, j];
+  //         }
   //       }
   //     }
+  //     return [];
+  //   }
+
+  // ------------------------------------------------------------------------
+
+  // Variant 2
+
+  // function twoSum(nums: number[], target: number): (number | undefined)[] {
+  //   const map: Map<number, number> = new Map();
+  //
+  //   for (let i = 0; i < nums.length; i++) {
+  //     const x = target - nums[i];
+  //
+  //     if (map.has(x)) {
+  //       return [map.get(x), i];
+  //     }
+  //
+  //     map.set(nums[i], i);
   //   }
   //
   //   return [];
   // }
 
-  // Approach 2: Two-pass Hash Table
+  // console.log(twoSum([2, 3, 1, 7], 8));
 
-  // function twoSum(nums: number[], target: number): number[] {
-  //   const map: Map<number, number> = new Map();
-  //   for (let i = 0; i < nums.length; i++) {
-  //     const complement = target - nums[i];
-  //     if (map.has(complement)) {
-  //       return [map.get(complement), i];
-  //     }
-  //     map.set(nums[i], i);
-  //   }
-  //   // Return an empty array if no solution is found
-  //   return [];
-  // }
-
-  // console.log(twoSum([2, 11, 7, 1], 9));
-
-  return <div className={cnN12(undefined, [props.className])}>N12</div>;
+  return (
+    <div className={cnLc1(undefined, [props.className])}>
+      <div>Lc1</div>
+    </div>
+  );
 };
