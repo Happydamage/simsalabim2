@@ -9,6 +9,7 @@ import {
   Typography,
 } from '@mui/material';
 import { CodeWarsUnitModel } from './models/CodeWarsModel.ts';
+import { CodeWarsServices } from './services/CodeWarsServices.ts';
 
 const cnCodeWarsItem = cn('CodeWarsItem');
 
@@ -17,17 +18,13 @@ interface CodeWarsItemProps extends CodeWarsUnitModel {
 }
 
 export const CodeWarsItem: FC<CodeWarsItemProps> = (props) => {
-  // const create = async (): Promise<void> => {
-  //   await CodeWarsServices.create({});
-  // };
+  const getId = async (): Promise<void> => {
+    const resp = await CodeWarsServices.edit('1');
 
-  // const getId = async (): Promise<void> => {
-  //   const resp = await CodeWarsServices.edit('1');
-  //
-  //   if (resp) {
-  //     setData(resp);
-  //   }
-  // };
+    // if (resp) {
+    //   setData(resp);
+    // }
+  };
 
   return (
     <Card

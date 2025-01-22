@@ -4,3 +4,9 @@ export interface CodeWarsUnitModel {
   solution: string;
   hashtag: string;
 }
+
+export interface CodeWarsUnitEditModel {
+  description: string;
+  solution: string;
+  hashtag: string;
+}

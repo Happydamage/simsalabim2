@@ -6,7 +6,6 @@ import { Grid2 } from '@mui/material';
 import { collection, doc, getDoc, getDocs } from 'firebase/firestore';
 import { db } from '../Firebase/Firebase.ts';
 import { CodeWarsUnitModel } from './models/CodeWarsModel.ts';
-import { TestBoard } from './Tasks/TestBoard.tsx';
 
 const cnCodeWarsList = cn('CodeWarsList');
 
@@ -15,33 +14,27 @@ interface CodeWarsListProps {
 }
 
 export const CodeWarsList: FC<CodeWarsListProps> = (props) => {
-  // const [unitListData, setUnitListData] = useState<CodeWarsUnitModel[] | null>(
-  //   null
-  // );
-  // const unitRef = doc(db, 'codeWars', '333');
+  const [data, setData] = useState<CodeWarsUnitModel[]>([]);
 
-  // useEffect(() => {
-  // const getUnitData = async (): Promise<void> => {
-  //   const unitsList = await getDocs(collection(db, 'codeWars'));
-  // const unitSnap = await getDoc(unitRef);
+  const getUnitData = async (): Promise<void> => {
+    const collectionRef = collection(db, 'codeWars');
 
-  // unitsList.forEach((unit) => {
-  //   console.log(unit.data());
-  // });
+    const allDataSnapshot = await getDocs(collectionRef);
 
-  // if (unitSnap.exists()) {
-  //   console.log('unitData:', unitSnap.data());
-  // } else {
-  //   console.log('noooooo');
-  // }
-  //   };
-  //
-  //   void getUnitData();
-  // }, []);
+    const allData: CodeWarsUnitModel[] = [];
 
-  // It's pretty straightforward. Your goal is to create a function that removes the first and last characters of a string. ' +
-  //'You're given one parameter, the original string.
-  // You don't have to worry about strings with less than two characters.
+    allDataSnapshot.forEach((doc) => {
+      allData.push(doc.data() as CodeWarsUnitModel);
+      setData(allData);
+    });
+    // console.log('forEach', allData);
+    // console.log('data', data);
+    console.log(allDataSnapshot);
+  };
+
+  useEffect(() => {
+    void getUnitData();
+  }, []);
 
   return (
     <Grid2
@@ -49,18 +42,17 @@ export const CodeWarsList: FC<CodeWarsListProps> = (props) => {
       container
       spacing={2}
     >
-      {/*<CodeWarsItem*/}
-      {/*  unitId={'1'}*/}
-      {/*  description={'Pew pew pew'}*/}
-      {/*  solution={'Qwerty qwerty qwerty'}*/}
-      {/*  hashtag={'array'}*/}
-      {/*/>*/}
+      <CodeWarsItem
+        unitId={'1'}
+        description={'Pew pew pew'}
+        solution={'Qwerty qwerty qwerty'}
+        hashtag={'array'}
+      />
       {/*{data.map((el, index) => (*/}
       {/*  <Grid2 key={index + 1}>*/}
       {/*    <CodeWarsItem id={el.id} taskData={el.taskData} />*/}
       {/*  </Grid2>*/}
       {/*))}*/}
-      <TestBoard />
     </Grid2>
   );
 };

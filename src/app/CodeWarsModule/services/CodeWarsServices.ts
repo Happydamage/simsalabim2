@@ -1,5 +1,8 @@
 import axios from 'axios';
-import { CodeWarsUnitModel } from '../models/CodeWarsModel.ts';
+import {
+  CodeWarsUnitEditModel,
+  CodeWarsUnitModel,
+} from '../models/CodeWarsModel.ts';
 
 export class CodeWarsServices {
   static list = async () => {
@@ -22,13 +25,13 @@ export class CodeWarsServices {
     }
   };
 
-  // static edit = async (id: string) => {
-  //   try {
-  //     return axios.get<>(
-  //       `http://localhost:3000/codewars/${id}`
-  //     );
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // };
+  static edit = async (id: string) => {
+    try {
+      return axios.get<CodeWarsUnitEditModel>(
+        `http://localhost:3000/codewars/${id}`
+      );
+    } catch (error) {
+      console.error(error);
+    }
+  };
 }
