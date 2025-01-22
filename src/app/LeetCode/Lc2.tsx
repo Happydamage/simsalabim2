@@ -57,5 +57,19 @@ interface Lc2Props {
 }
 
 export const Lc2: FC<Lc2Props> = (props) => {
+  // function romanToInt(s: string): number {
+  //   const grid = {
+  //     I: 1,
+  //     V: 5,
+  //     X: 10,
+  //     L: 50,
+  //     C: 100,
+  //     D: 500,
+  //     M: 1000,
+  //   };
+  // }
+
+  // console.log(romanToInt('MCMXCIV'));
+
   return <div className={cnLc2(undefined, [props.className])}>Lc2</div>;
 };
