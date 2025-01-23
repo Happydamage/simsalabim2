@@ -11,7 +11,7 @@ import {
 import { CodeWarsUnitModel } from './models/CodeWarsModel.ts';
 import { deleteDoc, doc } from 'firebase/firestore';
 import { db } from '../Firebase/Firebase.ts';
-import { CollectionNames } from './Tasks/constants.ts';
+import { CollectionNames } from './constants.ts';
 
 const cnCodeWarsItem = cn('CodeWarsItem');
 
