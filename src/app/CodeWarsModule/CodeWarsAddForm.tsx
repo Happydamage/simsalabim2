@@ -54,10 +54,8 @@ export const CodeWarsAddForm: FC<CodeWarsAddFormProps> = (props) => {
   };
 
   const onSubmit = handleSubmit(async (data): Promise<void> => {
-    console.log(data.hashtag);
-    console.log(data.unitId);
     await setDoc(doc(codeWarsRef, data.unitId), {
-      unitID: data.unitId,
+      unitId: data.unitId,
       description: data.description,
       solution: data.solution,
       hashtag: data.hashtag,
