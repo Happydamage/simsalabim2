@@ -1,3 +1,5 @@
 export const CodeWarsConstants = {
-  hashtag: [],
+  CollectionNames: {
+    codeWars: 'codeWars',
+  },
 };

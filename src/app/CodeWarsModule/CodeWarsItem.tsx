@@ -11,7 +11,8 @@ import {
 import { CodeWarsUnitModel } from './models/CodeWarsModel.ts';
 import { deleteDoc, doc } from 'firebase/firestore';
 import { db } from '../Firebase/Firebase.ts';
-import { CollectionNames } from './constants.ts';
+import { CodeWarsConstants } from './constants/constants.ts';
+import { getUnitsData } from './functions/functions.ts';
 
 const cnCodeWarsItem = cn('CodeWarsItem');
 
@@ -28,6 +29,7 @@ export const CodeWarsItem: FC<CodeWarsItemProps> = (props) => {
     try {
       const docRef = doc(db, collectionName, id);
       await deleteDoc(docRef);
+      await getUnitsData();
       console.log('Document successfully deleted!');
     } catch (error) {
       console.error('Error deleting document:', error);
@@ -67,7 +69,10 @@ export const CodeWarsItem: FC<CodeWarsItemProps> = (props) => {
         </Button>
         <Button
           onClick={() =>
-            handleDeleteItem(CollectionNames.CodeWars, props.unit.unitId)
+            handleDeleteItem(
+              CodeWarsConstants.CollectionNames.codeWars,
+              props.unit.unitId
+            )
           }
           size="small"
           variant="outlined"
