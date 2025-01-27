@@ -5,7 +5,7 @@ import { Button, Link } from '@mui/material';
 import { routes } from '../router/routes.ts';
 import { CodeWarsUnitsListStore } from './stores/CodeWarsUnitsListStore.ts';
 import { observer } from 'mobx-react-lite';
-import { getUnitsData } from './functions/functions.ts';
+import { createCollection, getUnitsData } from './functions/functions.ts';
 
 const cnCodeWarsModule = cn('CodeWarsModule');
 
@@ -14,6 +14,8 @@ interface CodeWarsModuleProps {
 }
 
 export const CodeWarsModule: FC<CodeWarsModuleProps> = observer((props) => {
+  createCollection('codeWars');
+
   useEffect(() => {
     void getUnitsData();
   }, []);

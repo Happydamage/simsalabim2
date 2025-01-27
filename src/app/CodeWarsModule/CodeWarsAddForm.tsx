@@ -39,7 +39,12 @@ export const CodeWarsAddForm: FC<CodeWarsAddFormProps> = (props) => {
     formState,
     formState: { isSubmitSuccessful },
   } = useForm<CodeWarsUnitModel>({
-    defaultValues: { unitId: '', description: '', solution: '', hashtag: '' },
+    defaultValues: {
+      unitId: '',
+      description: '',
+      solution: '',
+      hashtag: '',
+    },
   });
 
   const onSubmit = handleSubmit(async (data): Promise<void> => {
@@ -64,7 +69,7 @@ export const CodeWarsAddForm: FC<CodeWarsAddFormProps> = (props) => {
     >
       <Stack gap={1}>
         <TextField
-          required
+          // required
           {...register('unitId')}
           variant={'outlined'}
           label={'№'}

@@ -19,3 +19,7 @@ export const getUnitsData = async (): Promise<void> => {
     CodeWarsUnitsListStore.setList(allData);
   });
 };
+
+export const createCollection = (collectionName: string) => {
+  return collection(db, collectionName);
+};
