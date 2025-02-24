@@ -5,8 +5,10 @@ import { Button, Link } from '@mui/material';
 import { routes } from '../router/routes.ts';
 import { CodeWarsUnitsListStore } from './stores/CodeWarsUnitsListStore.ts';
 import { observer } from 'mobx-react-lite';
-import { getUnitsData, RectangleFactory } from './functions/functions.ts';
+import { getUnitsData } from './functions/functions.ts';
 import { FirebaseModal } from '../FirebaseModal/FirebaseModal.tsx';
+import MySvg from '../../assets/icons/startup-rocket-launch-icon.svg';
+import { IconComponent } from '../Components/IconComponent/IconComponent.tsx';
 
 const cnCodeWarsModule = cn('CodeWarsModule');
 
@@ -14,9 +16,24 @@ interface CodeWarsModuleProps {
   className?: string;
 }
 
-export const CodeWarsModule: FC<CodeWarsModuleProps> = observer((props) => {
-  console.log(RectangleFactory.calcArea(Math.random(), Math.random()));
+const IconSizesMap = {
+  sm: {
+    width: 24,
+    height: 24,
+  },
+  md: {
+    width: 36,
+    height: 36,
+  },
+  lg: {
+    width: 48,
+    height: 48,
+  },
+} as const;
 
+export type IconSizes = keyof typeof IconSizesMap;
+
+export const CodeWarsModule: FC<CodeWarsModuleProps> = observer((props) => {
   useEffect(() => {
     void getUnitsData();
   }, []);
@@ -31,6 +48,7 @@ export const CodeWarsModule: FC<CodeWarsModuleProps> = observer((props) => {
         <Button variant={'contained'}>Create Unit</Button>
       </Link>
       <CodeWarsList unitsData={CodeWarsUnitsListStore.data} />
+      <IconComponent icon={<MySvg />} />
     </div>
   );
 });
