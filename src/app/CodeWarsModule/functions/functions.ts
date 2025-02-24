@@ -23,3 +23,13 @@ export const getUnitsData = async (): Promise<void> => {
 export const createCollection = (collectionName: string) => {
   return collection(db, collectionName);
 };
+
+class RectanglePerimeter {
+  constructor() {}
+
+  calcArea(width: number, height: number) {
+    return width * height;
+  }
+}
+
+export const RectangleFactory = new RectanglePerimeter();

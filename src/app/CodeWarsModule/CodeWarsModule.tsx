@@ -5,7 +5,7 @@ import { Button, Link } from '@mui/material';
 import { routes } from '../router/routes.ts';
 import { CodeWarsUnitsListStore } from './stores/CodeWarsUnitsListStore.ts';
 import { observer } from 'mobx-react-lite';
-import { getUnitsData } from './functions/functions.ts';
+import { getUnitsData, RectangleFactory } from './functions/functions.ts';
 import { FirebaseModal } from '../FirebaseModal/FirebaseModal.tsx';
 
 const cnCodeWarsModule = cn('CodeWarsModule');
@@ -15,6 +15,8 @@ interface CodeWarsModuleProps {
 }
 
 export const CodeWarsModule: FC<CodeWarsModuleProps> = observer((props) => {
+  console.log(RectangleFactory.calcArea(Math.random(), Math.random()));
+
   useEffect(() => {
     void getUnitsData();
   }, []);
