@@ -7,31 +7,15 @@ import { CodeWarsUnitsListStore } from './stores/CodeWarsUnitsListStore.ts';
 import { observer } from 'mobx-react-lite';
 import { getUnitsData } from './functions/functions.ts';
 import { FirebaseModal } from '../FirebaseModal/FirebaseModal.tsx';
-import MySvg from '../../assets/icons/startup-rocket-launch-icon.svg';
-import { IconComponent } from '../Components/IconComponent/IconComponent.tsx';
+import RocketSvg from '../../assets/icons/rocket.svg';
+import QweSvg from '../../assets/icons/language.svg';
+import { SvgIconComponent } from '../Components/SvgIconComponent/SvgIconComponent.tsx';
 
 const cnCodeWarsModule = cn('CodeWarsModule');
 
 interface CodeWarsModuleProps {
   className?: string;
 }
-
-const IconSizesMap = {
-  sm: {
-    width: 24,
-    height: 24,
-  },
-  md: {
-    width: 36,
-    height: 36,
-  },
-  lg: {
-    width: 48,
-    height: 48,
-  },
-} as const;
-
-export type IconSizes = keyof typeof IconSizesMap;
 
 export const CodeWarsModule: FC<CodeWarsModuleProps> = observer((props) => {
   useEffect(() => {
@@ -48,7 +32,8 @@ export const CodeWarsModule: FC<CodeWarsModuleProps> = observer((props) => {
         <Button variant={'contained'}>Create Unit</Button>
       </Link>
       <CodeWarsList unitsData={CodeWarsUnitsListStore.data} />
-      <IconComponent icon={<MySvg />} />
+      <SvgIconComponent icon={<RocketSvg />} size={'medium'} />
+      <SvgIconComponent icon={<QweSvg />} size={'large'} />
     </div>
   );
 });
