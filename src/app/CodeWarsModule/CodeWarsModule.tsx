@@ -8,7 +8,6 @@ import { observer } from 'mobx-react-lite';
 import { getUnitsData } from './functions/functions.ts';
 import { FirebaseModal } from '../FirebaseModal/FirebaseModal.tsx';
 import RocketSvg from '../../assets/icons/rocket.svg';
-import QweSvg from '../../assets/icons/language.svg';
 import { SvgIconComponent } from '../Components/SvgIconComponent/SvgIconComponent.tsx';
 
 const cnCodeWarsModule = cn('CodeWarsModule');
@@ -33,7 +32,6 @@ export const CodeWarsModule: FC<CodeWarsModuleProps> = observer((props) => {
       </Link>
       <CodeWarsList unitsData={CodeWarsUnitsListStore.data} />
       <SvgIconComponent icon={<RocketSvg />} size={'medium'} />
-      <SvgIconComponent icon={<QweSvg />} size={'large'} />
     </div>
   );
 });
