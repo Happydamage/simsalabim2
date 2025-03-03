@@ -48,6 +48,11 @@ export default tseslint.config({
   },
 })
 ```
+
 pnpm
+
 node 20.16.0
+
 firebase emulators:start
+
+`Start json-server:` json-server --watch ./json-server/db.json `optional`(--port: 8000)
