@@ -9,10 +9,6 @@ import {
   Typography,
 } from '@mui/material';
 import { CodeWarsUnitModel } from './models/CodeWarsModel.ts';
-import { deleteDoc, doc } from 'firebase/firestore';
-import { db } from '../Firebase/Firebase.ts';
-import { CodeWarsConstants } from './constants/constants.ts';
-import { getUnitsData } from './functions/functions.ts';
 
 const cnCodeWarsItem = cn('CodeWarsItem');
 
@@ -22,20 +18,6 @@ interface CodeWarsItemProps {
 }
 
 export const CodeWarsItem: FC<CodeWarsItemProps> = (props) => {
-  const handleDeleteItem = async (
-    collectionName: string,
-    id: string
-  ): Promise<void> => {
-    try {
-      const docRef = doc(db, collectionName, id);
-      await deleteDoc(docRef);
-      await getUnitsData();
-      console.log('Document successfully deleted!');
-    } catch (error) {
-      console.error('Error deleting document:', error);
-    }
-  };
-
   return (
     <Card
       className={cnCodeWarsItem(undefined, [props.className])}
@@ -67,16 +49,7 @@ export const CodeWarsItem: FC<CodeWarsItemProps> = (props) => {
         <Button size="small" variant="contained">
           Edit
         </Button>
-        <Button
-          onClick={() =>
-            handleDeleteItem(
-              CodeWarsConstants.CollectionNames.codeWars,
-              props.unit.unitId
-            )
-          }
-          size="small"
-          variant="outlined"
-        >
+        <Button size="small" variant="outlined">
           Delete
         </Button>
       </CardActions>

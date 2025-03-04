@@ -9,8 +9,6 @@ import {
 } from '@mui/material';
 import { useForm } from 'react-hook-form';
 import { CodeWarsUnitModel } from './models/CodeWarsModel.ts';
-import { collection, doc, setDoc } from 'firebase/firestore';
-import { db } from '../Firebase/Firebase.ts';
 import { HashtagLabels } from '../../constants/constants.ts';
 
 const cnCodeWarsAddForm = cn('CodeWarsAddForm');
@@ -31,7 +29,6 @@ interface CodeWarsAddFormProps {
   MultipleAutocompleteProps: MultipleAutocompleteProps;
 }
 export const CodeWarsAddForm: FC<CodeWarsAddFormProps> = (props) => {
-  const codeWarsRef = collection(db, 'codeWars');
   const {
     register,
     handleSubmit,
@@ -47,13 +44,8 @@ export const CodeWarsAddForm: FC<CodeWarsAddFormProps> = (props) => {
     },
   });
 
-  const onSubmit = handleSubmit(async (data): Promise<void> => {
-    await setDoc(doc(codeWarsRef, data.unitId), {
-      unitId: data.unitId,
-      description: data.description,
-      solution: data.solution,
-      hashtag: data.hashtag,
-    });
+  const onSubmit = handleSubmit(async (): Promise<void> => {
+    //
   });
 
   useEffect(() => {
