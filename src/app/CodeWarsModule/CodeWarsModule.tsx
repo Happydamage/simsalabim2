@@ -24,7 +24,7 @@ export const CodeWarsModule: FC<CodeWarsModuleProps> = observer((props) => {
         <Button variant={'contained'}>Create Unit</Button>
       </Link>
       <CodeWarsList unitsData={CodeWarsUnitsListStore.data} />
-      <SvgIconComponent icon={<RocketSvg />} size={'medium'} />
+      {/*<SvgIconComponent icon={<RocketSvg />} size={'medium'} />*/}
     </div>
   );
 });

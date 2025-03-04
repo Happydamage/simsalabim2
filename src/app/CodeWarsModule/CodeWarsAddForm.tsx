@@ -26,7 +26,7 @@ interface MultipleAutocompleteProps {
 
 interface CodeWarsAddFormProps {
   className?: string;
-  MultipleAutocompleteProps: MultipleAutocompleteProps;
+  MultipleAutocompleteProps?: MultipleAutocompleteProps;
 }
 export const CodeWarsAddForm: FC<CodeWarsAddFormProps> = (props) => {
   const {
