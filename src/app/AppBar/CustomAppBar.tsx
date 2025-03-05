@@ -1,8 +1,17 @@
 import { FC } from 'react';
 import { cn } from '@bem-react/classname';
-import { AppBar, Box, IconButton, Link, Toolbar } from '@mui/material';
+import {
+  AppBar,
+  Box,
+  IconButton,
+  Link,
+  Toolbar,
+  Typography,
+} from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import { routes } from '../router/routes.ts';
+import './CustomAppBar.scss';
+import { observer } from 'mobx-react-lite';
 
 const cnCustomAppBar = cn('CustomAppBar');
 
@@ -10,14 +19,14 @@ interface CustomAppBarProps {
   className?: string;
 }
 
-export const CustomAppBar: FC<CustomAppBarProps> = (props) => {
+export const CustomAppBar: FC<CustomAppBarProps> = observer((props) => {
   return (
     <Box
       className={cnCustomAppBar(undefined, [props.className])}
       sx={{ flexGrow: 1 }}
       marginBottom={1}
     >
-      <AppBar position="static">
+      <AppBar className={cnCustomAppBar('AppBar')} position="static">
         <Toolbar variant="dense">
           <IconButton
             edge="start"
@@ -27,20 +36,13 @@ export const CustomAppBar: FC<CustomAppBarProps> = (props) => {
           >
             <MenuIcon />
           </IconButton>
-          {/*<Typography variant="h6" color="inherit" component="div">*/}
-          {/*  Pew pew*/}
-          {/*</Typography>*/}
-          {/*<Link*/}
-          {/*  href={routes.typeScriptChallenge.main()}*/}
-          {/*  style={{ color: 'white', marginRight: '2rem' }}*/}
-          {/*>*/}
-          {/*  TsChallenge*/}
-          {/*</Link>*/}
-          <Link href={routes.codeWars.main()} style={{ color: 'white' }}>
-            CodeWars
-          </Link>
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            <Link href={routes.codeWars.main()} style={{ color: 'white' }}>
+              CodeWars
+            </Link>
+          </Typography>
         </Toolbar>
       </AppBar>
     </Box>
   );
-};
+});
