@@ -1,26 +1,24 @@
-import { createTheme } from '@mui/material';
-import { common, green, purple } from '@mui/material/colors';
+import { colors, createTheme } from '@mui/material';
+import { amber, green, purple } from '@mui/material/colors';
 
-// export const darkTheme = createTheme({
-//   colorSchemes: {
-//     dark: true,
-//   },
-//
-//   palette: {
-//     mode: 'dark',
-//     primary: {
-//       main: common.black,
-//       dark: purple[900],
-//       light: green[800],
-//     },
-//   },
-// });
-//
-// export const lightTheme = createTheme({
-//   palette: {
-//     mode: 'light',
-//   },
-// });
+interface Colors {
+  color?: typeof colors;
+}
+
+export const darkTheme = createTheme({
+  palette: {
+    mode: 'dark',
+    primary: {
+      main: amber[800],
+      dark: purple[900],
+      light: green[800],
+    },
+    secondary: {
+      main: amber[500],
+      dark: purple[500],
+    },
+  },
+});
 
 export const lightTheme = createTheme({
   palette: {
@@ -28,13 +26,10 @@ export const lightTheme = createTheme({
   },
 });
 
-export const darkTheme = createTheme({
+export const orangeTheme = createTheme({
   palette: {
-    mode: 'dark',
-    // primary: {
-    //   main: common.black,
-    //   dark: purple[900],
-    //   light: green[800],
-    // },
+    primary: {
+      main: amber[900],
+    },
   },
 });

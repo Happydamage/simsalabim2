@@ -9,60 +9,48 @@ import {
   AccordionDetails,
   AccordionSummary,
   Box,
-  Button,
-  colors,
-  FormControlLabel,
-  Switch,
   ThemeProvider,
   Typography,
 } from '@mui/material';
 import { ExpandMore } from '@mui/icons-material';
-import { darkTheme } from '../../ColorThemes/ColorThemes.ts';
+import { darkTheme, lightTheme } from '../../ColorThemes/ColorThemes.ts';
 import { observer } from 'mobx-react-lite';
-import { themeStore } from '../../ColorThemes/ThemeStore/ThemeStore.ts';
-// import { ThemeStore } from '../../ColorThemes/ThemeStore/ThemeStore.ts';
-
-interface Colors {
-  color?: typeof colors;
-}
 
 const cnAppPage = cn('AppPage');
 
 export const AppPage: FC = observer(() => {
-  console.log(themeStore.theme.palette.mode);
   return (
-    // <ThemeProvider theme={ThemeStore.theme}>
-    <ThemeProvider theme={themeStore.theme}>
+    <ThemeProvider
+      theme={localStorage.getItem('theme') === '1' ? darkTheme : lightTheme}
+    >
       <Box
         className={cnAppPage()}
-        border={'.5rem solid' + `${darkTheme.palette.primary.dark}`}
+        border={'.5rem solid'}
+        borderColor={darkTheme.palette.primary.main}
       >
         <CustomAppBar />
-        <FormControlLabel
-          control={
-            <Switch
-              checked={themeStore.theme.palette.mode === 'dark'}
-              onChange={() => themeStore.toggleTheme()}
-            />
-          }
-          label={
-            themeStore.theme.palette.mode === 'dark'
-              ? 'Dark Mode'
-              : 'Light Mode'
-          }
-        />
-        <Button variant={'contained'} onClick={() => themeStore.toggleTheme}>
-          123
-        </Button>
+
         <main className={cnAppPage('Main')}>
           <Suspense fallback={<CircularProgressCentered />}>
             <Outlet />
-            <Button variant={'contained'}>123123123</Button>
+
             <Accordion>
               <AccordionSummary expandIcon={<ExpandMore />}>
                 <Typography component="span">Accordion 1</Typography>
               </AccordionSummary>
-              <AccordionDetails>Qwerty</AccordionDetails>
+
+              <AccordionDetails>
+                Lorem Ipsum is simply dummy text of the printing and typesetting
+                industry. Lorem Ipsum has been the industry's standard dummy
+                text ever since the 1500s, when an unknown printer took a galley
+                of type and scrambled it to make a type specimen book. It has
+                survived not only five centuries, but also the leap into
+                electronic typesetting, remaining essentially unchanged. It was
+                popularised in the 1960s with the release of Letraset sheets
+                containing Lorem Ipsum passages, and more recently with desktop
+                publishing software like Aldus PageMaker including versions of
+                Lorem Ipsum
+              </AccordionDetails>
             </Accordion>
           </Suspense>
         </main>

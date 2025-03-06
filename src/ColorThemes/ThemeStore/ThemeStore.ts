@@ -1,34 +1,16 @@
 import { makeAutoObservable } from 'mobx';
-import { Theme } from '@mui/material';
-import { darkTheme, lightTheme } from '../ColorThemes.ts';
-
-// class ColorThemeStore {
-//   theme: Theme = lightTheme;
-//
-//   constructor() {
-//     makeAutoObservable(this);
-//   }
-//
-//   toggleTheme(): void {
-//     this.theme = this.theme === lightTheme ? darkTheme : lightTheme;
-//   }
-//
-//   setTheme(): void {
-//     this.theme = darkTheme;
-//   }
-// }
-//
-// export const ThemeStore = new ColorThemeStore();
 
 class ThemeStore {
-  theme: Theme = lightTheme;
+  theme: 'light' | 'dark' = 'light';
 
   constructor() {
     makeAutoObservable(this);
   }
 
   toggleTheme(): void {
-    this.theme = this.theme === lightTheme ? darkTheme : lightTheme;
+    this.theme = this.theme === 'light' ? 'dark' : 'light';
+    localStorage.setItem('theme', this.theme === 'light' ? '1' : '0');
+    console.log(localStorage.getItem('theme'));
   }
 }
 

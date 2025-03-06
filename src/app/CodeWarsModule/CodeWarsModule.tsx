@@ -5,8 +5,6 @@ import { Button, Link } from '@mui/material';
 import { routes } from '../router/routes.ts';
 import { CodeWarsUnitsListStore } from './stores/CodeWarsUnitsListStore.ts';
 import { observer } from 'mobx-react-lite';
-import RocketSvg from '../../assets/icons/rocket.svg';
-import { SvgIconComponent } from '../Components/SvgIconComponent/SvgIconComponent.tsx';
 
 const cnCodeWarsModule = cn('CodeWarsModule');
 
@@ -24,7 +22,6 @@ export const CodeWarsModule: FC<CodeWarsModuleProps> = observer((props) => {
         <Button variant={'contained'}>Create Unit</Button>
       </Link>
       <CodeWarsList unitsData={CodeWarsUnitsListStore.data} />
-      {/*<SvgIconComponent icon={<RocketSvg />} size={'medium'} />*/}
     </div>
   );
 });
