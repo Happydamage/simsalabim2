@@ -24,6 +24,7 @@ export const AppPage: FC = observer(() => {
         className={cnAppPage()}
         border={'.5rem solid'}
         borderColor={(theme) => theme.palette.primary.main}
+        bgcolor={(theme) => theme.palette.secondary.main}
       >
         <CustomAppBar />
 
