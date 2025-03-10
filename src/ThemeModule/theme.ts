@@ -25,11 +25,3 @@ export const lightTheme = createTheme({
     mode: 'light',
   },
 });
-
-export const orangeTheme = createTheme({
-  palette: {
-    primary: {
-      main: amber[900],
-    },
-  },
-});

@@ -9,25 +9,18 @@ import {
   AccordionDetails,
   AccordionSummary,
   Box,
-  ThemeProvider,
   Typography,
 } from '@mui/material';
 import { ExpandMore } from '@mui/icons-material';
-import { darkTheme, lightTheme } from '../../ColorThemes/ColorThemes.ts';
 import { observer } from 'mobx-react-lite';
+import { ThemeProviderWrapper } from '../../ThemeModule/ThemeContext.tsx';
 
 const cnAppPage = cn('AppPage');
 
 export const AppPage: FC = observer(() => {
   return (
-    <ThemeProvider
-      theme={localStorage.getItem('theme') === '1' ? darkTheme : lightTheme}
-    >
-      <Box
-        className={cnAppPage()}
-        border={'.5rem solid'}
-        borderColor={darkTheme.palette.primary.main}
-      >
+    <ThemeProviderWrapper>
+      <Box className={cnAppPage()} border={'.5rem solid'}>
         <CustomAppBar />
 
         <main className={cnAppPage('Main')}>
@@ -55,6 +48,6 @@ export const AppPage: FC = observer(() => {
           </Suspense>
         </main>
       </Box>
-    </ThemeProvider>
+    </ThemeProviderWrapper>
   );
 });
