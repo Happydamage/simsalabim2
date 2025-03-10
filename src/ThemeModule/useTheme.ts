@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Theme } from '@mui/material';
 import { darkTheme, lightTheme } from './theme.ts';
 
@@ -19,20 +19,6 @@ const storedTheme = () => {
 
 export const useTheme = (): [Theme, () => void] => {
   const [currentTheme, setCurrentTheme] = useState<Theme>(() => storedTheme());
-
-  // useEffect(() => {
-  //   const storedTheme = localStorage.getItem('theme');
-  //   if (storedTheme === 'dark') {
-  //     setCurrentTheme(darkTheme);
-  //   } else {
-  //     const prefersDarkMode = window.matchMedia(
-  //       '(prefers-color-scheme: dark)'
-  //     ).matches;
-  //     if (storedTheme === null && prefersDarkMode) {
-  //       setCurrentTheme(darkTheme);
-  //     }
-  //   }
-  // }, []);
 
   const toggleTheme = () => {
     const newTheme = currentTheme === lightTheme ? darkTheme : lightTheme;
