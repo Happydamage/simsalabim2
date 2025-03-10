@@ -20,7 +20,11 @@ const cnAppPage = cn('AppPage');
 export const AppPage: FC = observer(() => {
   return (
     <ThemeProviderWrapper>
-      <Box className={cnAppPage()} border={'.5rem solid'}>
+      <Box
+        className={cnAppPage()}
+        border={'.5rem solid'}
+        borderColor={(theme) => theme.palette.primary.main}
+      >
         <CustomAppBar />
 
         <main className={cnAppPage('Main')}>
