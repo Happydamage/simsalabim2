@@ -14,6 +14,7 @@ import {
 import { ExpandMore } from '@mui/icons-material';
 import { observer } from 'mobx-react-lite';
 import { ThemeProviderWrapper } from '../../ThemeModule/ThemeContext.tsx';
+import { CustomModal } from '../Ulbi/Modal/CustomModal.tsx';
 
 const cnAppPage = cn('AppPage');
 
@@ -51,6 +52,7 @@ export const AppPage: FC = observer(() => {
               </AccordionDetails>
             </Accordion>
           </Suspense>
+          <CustomModal className={cnAppPage('Modal')} isOpen={true} />
         </main>
       </Box>
     </ThemeProviderWrapper>

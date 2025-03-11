@@ -3,8 +3,10 @@ import { cn } from '@bem-react/classname';
 import {
   AppBar,
   Box,
+  Divider,
   IconButton,
   Link,
+  Stack,
   Toolbar,
   Typography,
 } from '@mui/material';
@@ -39,13 +41,21 @@ export const CustomAppBar: FC<CustomAppBarProps> = observer((props) => {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+
+          <Stack
+            divider={<Divider orientation={'vertical'} flexItem />}
+            direction={'row'}
+            sx={{ flexGrow: 1 }}
+            spacing={2}
+          >
+            <Link href={routes.home()} display={'flex'}>
+              <SvgIconComponent icon={<RocketSvg />} />
+            </Link>
             <Link href={routes.codeWars.main()} style={{ color: 'white' }}>
               CodeWars
             </Link>
-          </Typography>
+          </Stack>
           <ThemeSwitcher />
-          <SvgIconComponent icon={<RocketSvg />} />
         </Toolbar>
       </AppBar>
     </Box>

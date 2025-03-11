@@ -16,4 +16,8 @@
     background-color: bisque;
     border-radius: 8px;
   }
+
+  &-Main {
+    height: calc(100% - 3.5rem);
+  }
 }
