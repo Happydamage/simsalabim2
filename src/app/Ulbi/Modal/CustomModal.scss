@@ -20,10 +20,23 @@
   &-Content {
     padding: 1.5rem;
     border-radius: 1rem;
+    max-width: 20rem;
+    transition: .3s transform ease-in-out;
+    transform: scale(.5);
   }
 
   &_open {
     pointer-events: auto;
     opacity: 1;
+
+    .CustomModal-Content {
+      transform: scale(1);
+    }
+  }
+
+  &_isClosing {
+    .CustomModal-Content {
+      transform: scale(.2);
+    }
   }
 }

@@ -1,4 +1,12 @@
-import { FC, ReactNode } from 'react';
+import {
+  FC,
+  MouseEvent as ReactMouseEvent,
+  ReactNode,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 import { cn } from '@bem-react/classname';
 import { Box } from '@mui/material';
 import './CustomModal.scss';
@@ -12,13 +20,52 @@ interface ModalProps {
   onClose?: () => void;
 }
 
-const mods: Record<string, boolean> = {};
-
 export const CustomModal: FC<ModalProps> = (props) => {
+  const [isClosing, setIsClosing] = useState(false);
+  const timerRef = useRef<ReturnType<typeof setTimeout>>();
+  const onContentClick = (e: ReactMouseEvent<HTMLDivElement>) => {
+    e?.stopPropagation();
+  };
+
+  const closeHandler = useCallback(() => {
+    if (props.onClose) {
+      setIsClosing(true);
+      timerRef.current = setTimeout(() => {
+        props.onClose?.();
+        setIsClosing(false);
+      }, 300);
+    }
+  }, [props]);
+
+  const onKeyDown = useCallback(
+    (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        closeHandler();
+      }
+    },
+    [closeHandler]
+  );
+
+  useEffect(() => {
+    if (props.isOpen) {
+      window.addEventListener('keydown', onKeyDown);
+    }
+
+    return () => {
+      clearTimeout(timerRef.current);
+    };
+  }, [props.isOpen, onKeyDown]);
+
+  const mods: Record<string, boolean | undefined> = {
+    open: props.isOpen,
+    isClosing: isClosing,
+  };
+
   return (
-    <Box className={cnCustomModal(undefined, [props.className])}>
-      <Box className={cnCustomModal('Overlay', { open: props.isOpen })}>
+    <Box className={cnCustomModal(mods, [props.className])}>
+      <Box className={cnCustomModal('Overlay')} onClick={closeHandler}>
         <Box
+          onClick={onContentClick}
           className={cnCustomModal('Content')}
           border={'.5rem solid'}
           borderColor={(theme) => theme.palette.primary.main}

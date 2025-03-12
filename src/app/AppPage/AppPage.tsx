@@ -1,4 +1,4 @@
-import { FC, Suspense } from 'react';
+import { FC, Suspense, useState } from 'react';
 import { cn } from '@bem-react/classname';
 import { CircularProgressCentered } from '../loaders/CircularProgressCentered/CircularProgressCentered.tsx';
 import { Outlet } from 'react-router-dom';
@@ -9,6 +9,7 @@ import {
   AccordionDetails,
   AccordionSummary,
   Box,
+  Button,
   Typography,
 } from '@mui/material';
 import { ExpandMore } from '@mui/icons-material';
@@ -19,6 +20,8 @@ import { CustomModal } from '../Ulbi/Modal/CustomModal.tsx';
 const cnAppPage = cn('AppPage');
 
 export const AppPage: FC = observer(() => {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
     <ThemeProviderWrapper>
       <Box
@@ -52,7 +55,16 @@ export const AppPage: FC = observer(() => {
               </AccordionDetails>
             </Accordion>
           </Suspense>
-          <CustomModal className={cnAppPage('Modal')} isOpen={true} />
+          <Button onClick={() => setIsOpen(true)}>Toggle</Button>
+          <CustomModal
+            className={cnAppPage('Modal')}
+            isOpen={isOpen}
+            onClose={() => setIsOpen(false)}
+          >
+            {"border={'.5rem solid'}\n" +
+              'borderColor={(theme) => theme.palette.primary.main}\n' +
+              'bgcolor={(theme) => theme.palette.secondary.main}'}
+          </CustomModal>
         </main>
       </Box>
     </ThemeProviderWrapper>
