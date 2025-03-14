@@ -10,6 +10,7 @@ import {
 import { cn } from '@bem-react/classname';
 import { Box } from '@mui/material';
 import './CustomModal.scss';
+import { CustomPortal } from '../../CustomPortal/Portal.tsx';
 
 const cnCustomModal = cn('CustomModal');
 
@@ -62,18 +63,20 @@ export const CustomModal: FC<ModalProps> = (props) => {
   };
 
   return (
-    <Box className={cnCustomModal(mods, [props.className])}>
-      <Box className={cnCustomModal('Overlay')} onClick={closeHandler}>
-        <Box
-          onClick={onContentClick}
-          className={cnCustomModal('Content')}
-          border={'.5rem solid'}
-          borderColor={(theme) => theme.palette.primary.main}
-          bgcolor={(theme) => theme.palette.secondary.main}
-        >
-          {props.children}
+    <CustomPortal element={document.body}>
+      <Box className={cnCustomModal(mods, [props.className])}>
+        <Box className={cnCustomModal('Overlay')} onClick={closeHandler}>
+          <Box
+            onClick={onContentClick}
+            className={cnCustomModal('Content')}
+            border={'.5rem solid'}
+            borderColor={(theme) => theme.palette.primary.main}
+            bgcolor={(theme) => theme.palette.secondary.main}
+          >
+            {props.children}
+          </Box>
         </Box>
       </Box>
-    </Box>
+    </CustomPortal>
   );
 };
