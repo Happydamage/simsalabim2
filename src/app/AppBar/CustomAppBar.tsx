@@ -8,7 +8,6 @@ import {
   Link,
   Stack,
   Toolbar,
-  Typography,
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import { routes } from '../router/routes.ts';
