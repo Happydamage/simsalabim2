@@ -10,4 +10,8 @@ export const routes = {
   typeScriptChallenge: {
     main: () => '/ts-challenge',
   },
+
+  miniDrawer: {
+    main: () => '/mini-drawer',
+  },
 };

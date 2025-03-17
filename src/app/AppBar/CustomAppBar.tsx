@@ -50,6 +50,7 @@ export const CustomAppBar: FC<CustomAppBarProps> = observer((props) => {
             <Link href={routes.home()} display={'flex'}>
               <SvgIconComponent icon={<RocketSvg />} />
             </Link>
+            <Link href={routes.miniDrawer.main()}>Drawer</Link>
             <Link href={routes.codeWars.main()} style={{ color: 'white' }}>
               CodeWars
             </Link>
