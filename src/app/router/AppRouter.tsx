@@ -12,6 +12,7 @@ import { routes } from './routes.ts';
 import { CodeWarsAddForm } from '../CodeWarsModule/CodeWarsAddForm.tsx';
 import { TypeScriptChallengesModule } from '../TypeScriptChallengesModule/TypeScriptChallengesModule.tsx';
 import MiniDrawer from '../MiniDrawer/MiniDrawer.tsx';
+import {LoginForm} from "../Components/LoginForm/LoginForm.tsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -24,7 +25,8 @@ const router = createBrowserRouter(
           path={routes.typeScriptChallenge.main()}
           element={<TypeScriptChallengesModule />}
         />
-        <Route path={routes.miniDrawer.main()} element={<MiniDrawer />} />
+        {/*<Route path={routes.miniDrawer.main()} element={<MiniDrawer />} />*/}
+        <Route path={routes.miniDrawer.main()} element={<LoginForm />} />
       </Route>
     </Route>
   )
