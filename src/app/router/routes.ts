@@ -14,4 +14,8 @@ export const routes = {
   miniDrawer: {
     main: () => '/mini-drawer',
   },
+
+  loginForm: {
+    main: () => '/loginForm',
+  },
 };

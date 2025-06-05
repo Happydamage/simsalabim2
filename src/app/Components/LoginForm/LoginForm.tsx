@@ -1,6 +1,7 @@
 import {FC, useContext, useState} from 'react';
 import {cn} from "@bem-react/classname";
 import {Context} from "../../../main.tsx";
+import {observer} from "mobx-react-lite";
 
 const cnLoginForm = cn('LoginForm');
 
@@ -8,7 +9,7 @@ interface LoginFormProps {
     className?: string;
 }
 
-export const LoginForm: FC<LoginFormProps> = (props) => {
+export const LoginForm: FC<LoginFormProps> = observer( (props) => {
     const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('');
     const {store} = useContext(Context);
@@ -31,4 +32,4 @@ export const LoginForm: FC<LoginFormProps> = (props) => {
             <button onClick={() => store.registration(email, password)}>Registration</button>
         </div>
     );
-};
+});
