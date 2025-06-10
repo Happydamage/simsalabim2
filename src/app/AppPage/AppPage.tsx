@@ -4,14 +4,13 @@ import { CircularProgressCentered } from '../loaders/CircularProgressCentered/Ci
 import { Outlet } from 'react-router-dom';
 import { CustomAppBar } from '../AppBar/CustomAppBar.tsx';
 import './AppPage.scss';
-import {Box} from '@mui/material';
+import { Box } from '@mui/material';
 import { observer } from 'mobx-react-lite';
 import { ThemeProviderWrapper } from '../../ThemeModule/ThemeContext.tsx';
 
 const cnAppPage = cn('AppPage');
 
 export const AppPage: FC = observer(() => {
-
   return (
     <ThemeProviderWrapper>
       <Box

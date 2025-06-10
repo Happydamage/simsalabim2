@@ -1,8 +1,8 @@
 import {
-    createBrowserRouter,
-    createRoutesFromElements,
-    Route,
-    RouterProvider,
+  createBrowserRouter,
+  createRoutesFromElements,
+  Route,
+  RouterProvider,
 } from 'react-router-dom';
 import { FC } from 'react';
 import { ErrorBoundary } from './ErrorBoundary.tsx';
@@ -11,8 +11,7 @@ import { AppPage } from '../AppPage/AppPage.tsx';
 import { routes } from './routes.ts';
 import { CodeWarsAddForm } from '../CodeWarsModule/CodeWarsAddForm.tsx';
 import { TypeScriptChallengesModule } from '../TypeScriptChallengesModule/TypeScriptChallengesModule.tsx';
-import {LoginForm} from "../Components/LoginForm/LoginForm.tsx";
-
+import { LoginForm } from '../Components/LoginForm/LoginForm.tsx';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
