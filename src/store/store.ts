@@ -68,13 +68,13 @@ export default class Store {
       const response = await axios.get<AuthResponse>(`${API_URL}/refresh`, {
         withCredentials: true,
       });
-      toast(response.statusText);
+      console.log(response.statusText);
       localStorage.setItem('token', response.data.accessToken);
       this.setAuth(true);
       this.setUser(response.data.user);
     } catch (e) {
       if (e instanceof AxiosError) {
-        toast(e.response?.data.message || e.message);
+        console.log(e.response?.data.message || e.message);
       }
     }
   }
