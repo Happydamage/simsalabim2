@@ -73,3 +73,14 @@ class Order<T> {
     this.data = arg;
   }
 }
+
+//
+type isArray<T> = T extends any[] ? true : false;
+type isMetaData<T> = T extends MetaData ? { value: number } : { value: string };
+
+const first: isArray<string> = false;
+const second: isArray<string[]> = true;
+const third: isArray<MetaData> = false;
+const four: isArray<MetaData[]> = true;
+const five: isMetaData<MetaData> = { value: 5 };
+const six: isMetaData<number> = { value: '5' };
