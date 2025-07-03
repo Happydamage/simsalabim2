@@ -109,3 +109,33 @@ function fn5(arg: Car) {
 }
 
 //Type Guards
+
+interface Car2 {
+  maxSpeed: number;
+  width: number;
+}
+
+interface Person2 {
+  age: number;
+  name: string;
+}
+
+function isCar(value: Car2 | Person2): value is Car2 {
+  return 'maxSpeed' in value && 'width' in value;
+}
+
+function isPerson(value: Car2 | Person2): value is Person2 {
+  return 'age' in value && 'name' in value;
+}
+
+function isBmw(value: Bmw | Audi): value is Bmw {
+  return value.type === 'bmw';
+}
+
+function fn6(data: Car2 | Person2) {
+  if (isCar(data)) {
+    return 1;
+  } else {
+    return 2;
+  }
+}
