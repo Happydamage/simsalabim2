@@ -7,13 +7,19 @@ import './AppPage.scss';
 import { Box } from '@mui/material';
 import { observer } from 'mobx-react-lite';
 import { ThemeProviderWrapper } from '../../ThemeModule/ThemeContext.tsx';
-import { getByKey } from '../../../TypeScript/Types/typeof-keyof/typeof-keyof.ts';
-import { routes } from '../router/routes.ts';
 
 const cnAppPage = cn('AppPage');
 
 export const AppPage: FC = observer(() => {
-  console.log(getByKey(routes, 'codeWars'));
+  const Color = {
+    RED: 'red',
+    GREEN: 'green',
+    BLUE: 'blue',
+  } as const;
+
+  type Color1 = (typeof Color)[keyof typeof Color];
+
+  console.log();
 
   return (
     <ThemeProviderWrapper>
