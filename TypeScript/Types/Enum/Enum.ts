@@ -10,4 +10,7 @@ const Color = {
 
 type Color = (typeof Color)[keyof typeof Color];
 type Color1 = ValueOf<typeof Color>;
+
+function setColor(color: Color1) {}
+setColor(Color.RED);
 //

@@ -1,0 +1,49 @@
+//MappedTypes - это типы которые позволяют создавать новые типы на основе существующих изменяя какие-то поля
+
+import { number } from 'zod';
+
+interface User {
+  name: string;
+  age: number;
+  address: string;
+}
+
+type ReadonlyType<T> = {
+  readonly [K in keyof T]: T[K];
+};
+
+type ReadonlyType2<T> = {
+  readonly [K in keyof T]?: T[K] | null;
+};
+
+const NewUser: ReadonlyType<User> = {
+  age: 10,
+};
+
+const NewUser2: ReadonlyType2<User> = {
+  age: 25,
+};
+
+type NewUser2 = ReadonlyType2<User>;
+
+//
+
+type OptionalType<T> = {
+  readonly [K in keyof T]?: T[K] | null;
+};
+
+// Отмена ридонли и опциональности
+type EditType<T> = {
+  -readonly [K in keyof T]-?: T[K];
+};
+
+type NewUser3 = OptionalType<User>;
+type NewUser4 = EditType<User>;
+
+//
+
+type ArrayAnalog<T> = {
+  [K in number]: T;
+};
+
+const arr: ArrayAnalog<string> = {};

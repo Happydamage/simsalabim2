@@ -11,16 +11,6 @@ import { ThemeProviderWrapper } from '../../ThemeModule/ThemeContext.tsx';
 const cnAppPage = cn('AppPage');
 
 export const AppPage: FC = observer(() => {
-  const Color = {
-    RED: 'red',
-    GREEN: 'green',
-    BLUE: 'blue',
-  } as const;
-
-  type Color1 = (typeof Color)[keyof typeof Color];
-
-  console.log();
-
   return (
     <ThemeProviderWrapper>
       <Box
