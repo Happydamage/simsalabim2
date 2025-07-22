@@ -6,6 +6,7 @@ interface User {
   name: string;
   age: number;
   address: string;
+  type?: string;
 }
 
 type ReadonlyType<T> = {
@@ -32,7 +33,7 @@ type OptionalType<T> = {
   readonly [K in keyof T]?: T[K] | null;
 };
 
-// Отмена ридонли и опциональности
+// Отмена readonly и '?' опциональности
 type EditType<T> = {
   -readonly [K in keyof T]-?: T[K];
 };
@@ -46,4 +47,15 @@ type ArrayAnalog<T> = {
   [K in number]: T;
 };
 
-const arr: ArrayAnalog<string> = {};
+//
+
+type WithoutType<T> = {
+  [K in keyof T as Exclude<K, 'type'>]: T[K];
+};
+
+type GetMethods<T> = {
+  [K in keyof T as `get${Capitalize<string & K>}`]: T[K];
+};
+
+const pew: WithoutType<User> = {};
+const pew2: GetMethods<User> = {};
